@@ -1,0 +1,26 @@
+# Vendor downloads (ASUS / ASMedia drivers, firmware, installers) - not ours to redistribute
+vendor/
+
+# Local reverse-engineering workspace: copied vendor binaries and capture logs
+analysis/
+
+# Ghidra project
+*.gpr
+*.rep/
+*.lock
+*.lock~
+
+# Build output
+*.exe
+*.dll
+*.pdb
+
+# Logs
+*.log
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.claude/
