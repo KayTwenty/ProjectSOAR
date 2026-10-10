@@ -1,6 +1,6 @@
 # ProjectSOAR
 
-Fixes for the ASUS STRIX RAID PRO sound card on Windows 10, now that ASUS has dropped support for it.
+Fixes for the ASUS STRIX RAID PRO sound card on Windows 10 and 11, now that ASUS has dropped support for it.
 
 I love how this card sounds, but two things broke and ASUS isn't fixing them anymore:
 
@@ -18,7 +18,7 @@ This repo fixes both. Nothing from ASUS is modified, and no ASUS files are inclu
 ## Requirements
 
 - STRIX RAID PRO with the ASUS driver installed. I tested with driver/Sonic Studio package 1.1.23 and control box firmware 1.14.
-- Windows 10 64-bit. I'm on 22H2.
+- Windows 10 or 11, 64-bit. I'm on Windows 10 22H2. Windows 11 should work too, since everything here only uses standard Windows features, but I haven't been able to test it yet.
 - Admin rights to install.
 
 You don't need to download anything else. The install script compiles SoarDial with the C# compiler that comes with Windows.
@@ -134,6 +134,9 @@ Sending command `0x06` with one data byte (`0x01`) asks the box for its firmware
 ## Known limits
 
 - I've only tested this on my own PC: STRIX RAID PRO, box firmware 1.14, Windows 10 22H2.
+- Windows 11 is untested. The scripts and SoarDial should run fine there. The bigger question is the ASUS driver itself, which dates from 2016. New Windows 11 installs often have Memory Integrity turned on, and that can block older drivers. Getting the ASUS driver installed is outside what this repo fixes.
+- SoarDial doesn't actually depend on the ASUS software. It just looks for an audio output with "STRIX" in the name, so the dial should still work if the card ends up on Windows' generic USB audio driver instead. I haven't tried that either.
+- If you're on Windows 11, please open an issue and say whether it worked, either way.
 - The ASUS software also looks for `PID_180C`, which I think is the STRIX RAID DLX. SoarDial will try to use it, but I haven't tested it and the lights might be laid out differently. If you have one, let me know how it goes.
 - The boot fix only helps when the controller is there but the audio device behind it isn't. If the controller itself is missing, that's a hardware or PCIe problem and this can't fix it. The boot log will tell you which one it is.
 
